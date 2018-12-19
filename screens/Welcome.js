@@ -7,10 +7,25 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button , AsyncStorage} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import {goHome , goToAuth} from "./navigation";
 
- class WelcomeScreen extends Component {
+class WelcomeScreen extends Component {
+
+
+    async componentDidMount() {
+        try {
+
+
+                goToAuth()
+
+        } catch (err) {
+            console.log('error: ', err)
+            goToAuth()
+        }
+    }
+
 
      goToScreen = (screenName) => {
 
@@ -31,6 +46,9 @@ import {Navigation} from 'react-native-navigation';
 
                 <Button title ='Sign In' onPress={ ()=>this.goToScreen('SignUp') }
                   />
+
+                <Button title ='Sign In'
+                />
 
             </View>
         );
