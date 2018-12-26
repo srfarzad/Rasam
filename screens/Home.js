@@ -7,9 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button , FlatList , Image} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button , FlatList , Image , ScrollView } from 'react-native';
 import Pushe from 'react-native-pushe'
 import {I18nManager} from 'react-native';
+import ImageSlider from 'react-native-image-slider';
+
 
 
 class Home extends Component {
@@ -73,6 +75,23 @@ class Home extends Component {
 
         return (
             <View style={styles.container}>
+
+                <ScrollView>
+
+
+                <View style={{height:300}}>
+
+                    <ImageSlider  loopBothSides
+                                  autoPlayWithInterval={3000} images={[
+                        'http://placeimg.com/640/480/any',
+                        'http://placeimg.com/640/480/any',
+                        'http://placeimg.com/640/480/any'
+                    ]}/>
+
+                </View>
+
+
+
                 <Text style={styles.welcome}>برترین محصولات</Text>
 
                 <FlatList
@@ -109,7 +128,7 @@ class Home extends Component {
 
 
 
-
+                </ScrollView>
 
             </View>
         );
