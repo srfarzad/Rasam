@@ -7,22 +7,108 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button , FlatList , Image} from 'react-native';
 import Pushe from 'react-native-pushe'
+import {I18nManager} from 'react-native';
 
 
 class Home extends Component {
-    constructor(){
-        Pushe.initialize(true);
-        super();
 
+
+    getBestData() {
+
+
+        fetch('http://androidsupport.ir/market/getBestApplications.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({application: responseJson})
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+    }
+
+        getNewData() {
+
+
+            fetch('http://androidsupport.ir/market/getNewApplications.php')
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    this.setState({newApplication : responseJson})
+                } )
+                .catch((error)=>{
+                    console.log(error)
+                })
+
+
+
+
+        }
+
+
+    constructor(props){
+        Pushe.initialize(true);
+        super(props);
+
+        this.state = {
+
+            application : null,
+            newApplication : null,
+
+        }
+
+
+    }
+
+    componentDidMount(){
+        this.getBestData();
+        this.getNewData();
     }
 
 
     render() {
+
+        console.log(this.state.application)
+
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>Home</Text>
+                <Text style={styles.welcome}>برترین محصولات</Text>
+
+                <FlatList
+                    style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' , height : 144 }}
+                horizontal={true}
+                keyExtractor={(item,index)=>index.toString()}
+                data={this.state.application}
+
+                renderItem ={({item})=><View style={styles.card}>
+
+                    <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
+                    <Text style={styles.text}>{item.title}</Text>
+
+                </View>}
+                />
+
+
+
+                <Text style={styles.welcome}>جدیدترین محصولات</Text>
+
+                <FlatList
+                    style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' ,  height : 144 }}
+                    horizontal={true}
+                    keyExtractor={(item,index)=>index.toString()}
+                    data={this.state.newApplication}
+
+                    renderItem ={({item})=><View style={styles.card}>
+
+                        <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
+                        <Text style={styles.text}>{item.title}</Text>
+
+                    </View>}
+                />
+
+
+
 
 
             </View>
@@ -34,19 +120,28 @@ export default Home;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+
+
     },
     welcome: {
         fontSize: 20,
-        textAlign: 'center',
+        textAlign: 'left',
         margin: 10,
     },
-    instructions: {
+    text: {
         textAlign: 'center',
         color: '#333333',
-        marginBottom: 5,
+        marginTop : 5,
+
     },
+
+    card : {
+        width: 144,
+        height : 144,
+        backgroundColor:'#ffffff',
+        marginRight:15,
+        marginTop : 15,
+        alignItems: 'center',
+    },
+
 });
