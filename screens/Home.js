@@ -8,9 +8,17 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import Pushe from 'react-native-pushe'
 
 
 class Home extends Component {
+    constructor(){
+        Pushe.initialize(true);
+        super();
+
+    }
+
+
     render() {
         return (
             <View style={styles.container}>

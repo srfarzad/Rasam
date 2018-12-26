@@ -39,6 +39,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		08BD6C1B59004B22BAC72196 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092C110D4DCC492DB77FE6C6 /* libReactNativeNavigation.a */; };
 		9DE1B955C9F34299B3BC34B2 /* ReactNativeNavigationTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 0BD589F2039D4EA1B29E660C /* ReactNativeNavigationTests.xctest */; };
+		E389413765034C86B84B0706 /* libRNPushe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C81A829CEBD04C798D09BCBC /* libRNPushe.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +348,8 @@
 		D6F25FDB7AA04008BA466AD9 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		092C110D4DCC492DB77FE6C6 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0BD589F2039D4EA1B29E660C /* ReactNativeNavigationTests.xctest */ = {isa = PBXFileReference; name = "ReactNativeNavigationTests.xctest"; path = "ReactNativeNavigationTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
+		309CD763D0F44041AFBDD853 /* RNPushe.xcodeproj */ = {isa = PBXFileReference; name = "RNPushe.xcodeproj"; path = "../node_modules/react-native-pushe/ios/RNPushe.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		C81A829CEBD04C798D09BCBC /* libRNPushe.a */ = {isa = PBXFileReference; name = "libRNPushe.a"; path = "libRNPushe.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +379,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				08BD6C1B59004B22BAC72196 /* libReactNativeNavigation.a in Frameworks */,
 				9DE1B955C9F34299B3BC34B2 /* ReactNativeNavigationTests.xctest in Resources */,
+				E389413765034C86B84B0706 /* libRNPushe.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +567,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				D6F25FDB7AA04008BA466AD9 /* ReactNativeNavigation.xcodeproj */,
+				309CD763D0F44041AFBDD853 /* RNPushe.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1192,10 +1197,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Debug;
@@ -1219,10 +1226,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Release;
@@ -1246,6 +1255,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Debug;
@@ -1268,6 +1278,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Release;
@@ -1299,10 +1310,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Debug;
@@ -1334,10 +1347,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Release;
@@ -1368,10 +1383,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Debug;
@@ -1402,10 +1419,12 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+					"$(SRCROOT)\..\node_modules\react-native-pushe\ios",
 				);
 			};
 			name = Release;
