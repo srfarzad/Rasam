@@ -48,6 +48,23 @@ class Home extends Component {
 
         }
 
+    getAllData() {
+
+
+        fetch('http://androidsupport.ir/market/getAllApplications.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({newApplication : responseJson})
+            } )
+            .catch((error)=>{
+                console.log(error)
+            })
+
+
+
+
+    }
+
 
     constructor(props){
         Pushe.initialize(true);
@@ -57,6 +74,7 @@ class Home extends Component {
 
             application : null,
             newApplication : null,
+            allApplication : null,
 
         }
 
@@ -66,6 +84,7 @@ class Home extends Component {
     componentDidMount(){
         this.getBestData();
         this.getNewData();
+        this.getAllData();
     }
 
 
@@ -79,13 +98,13 @@ class Home extends Component {
                 <ScrollView>
 
 
-                <View style={{height:300}}>
+                <View style={{height:220}}>
 
                     <ImageSlider  loopBothSides
                                   autoPlayWithInterval={3000} images={[
-                        'http://placeimg.com/640/480/any',
-                        'http://placeimg.com/640/480/any',
-                        'http://placeimg.com/640/480/any'
+                        'http://androidsupport.ir/picpic/images/react-native.jpg',
+                        'http://androidsupport.ir/picpic/images/images2.jpg',
+                        'http://androidsupport.ir/picpic/images/farzad.jpg'
                     ]}/>
 
                 </View>
@@ -127,6 +146,22 @@ class Home extends Component {
                 />
 
 
+                    <Text style={styles.welcome}>همه محصولات</Text>
+
+                    <FlatList
+                        style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' , height : 144 }}
+                        horizontal={true}
+                        keyExtractor={(item,index)=>index.toString()}
+                        data={this.state.application}
+
+                        renderItem ={({item})=><View style={styles.card}>
+
+                            <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
+                            <Text style={styles.text}>{item.title}</Text>
+
+                        </View>}
+                    />
+
 
                 </ScrollView>
 
@@ -143,11 +178,13 @@ const styles = StyleSheet.create({
 
     },
     welcome: {
+        fontFamily: "irsans" ,
         fontSize: 20,
         textAlign: 'left',
         margin: 10,
     },
     text: {
+        fontFamily: "irsans" ,
         textAlign: 'center',
         color: '#333333',
         marginTop : 5,

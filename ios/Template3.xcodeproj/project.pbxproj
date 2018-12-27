@@ -40,6 +40,8 @@
 		08BD6C1B59004B22BAC72196 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 092C110D4DCC492DB77FE6C6 /* libReactNativeNavigation.a */; };
 		9DE1B955C9F34299B3BC34B2 /* ReactNativeNavigationTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 0BD589F2039D4EA1B29E660C /* ReactNativeNavigationTests.xctest */; };
 		E389413765034C86B84B0706 /* libRNPushe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C81A829CEBD04C798D09BCBC /* libRNPushe.a */; };
+		6008176922204F47AFC69F54 /* irsans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3626A78D2BC746B8989BEF7C /* irsans.ttf */; };
+		81A222546D1945EC935BBFE0 /* irsans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9CEFF573D504EE9B1E850DB /* irsans.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -350,6 +352,8 @@
 		0BD589F2039D4EA1B29E660C /* ReactNativeNavigationTests.xctest */ = {isa = PBXFileReference; name = "ReactNativeNavigationTests.xctest"; path = "ReactNativeNavigationTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
 		309CD763D0F44041AFBDD853 /* RNPushe.xcodeproj */ = {isa = PBXFileReference; name = "RNPushe.xcodeproj"; path = "../node_modules/react-native-pushe/ios/RNPushe.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		C81A829CEBD04C798D09BCBC /* libRNPushe.a */ = {isa = PBXFileReference; name = "libRNPushe.a"; path = "libRNPushe.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		3626A78D2BC746B8989BEF7C /* irsans.ttf */ = {isa = PBXFileReference; name = "irsans.ttf"; path = "../assets/irsans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C9CEFF573D504EE9B1E850DB /* irsans.ttf */ = {isa = PBXFileReference; name = "irsans.ttf"; path = "../assets/fonts/irsans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -589,6 +593,7 @@
 				00E356EF1AD99517003FC87E /* Template3Tests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				35693BDEC2724BDAAF0DC8D1 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -614,6 +619,16 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		35693BDEC2724BDAAF0DC8D1 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				3626A78D2BC746B8989BEF7C /* irsans.ttf */,
+				C9CEFF573D504EE9B1E850DB /* irsans.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1061,6 +1076,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				6008176922204F47AFC69F54 /* irsans.ttf in Resources */,
+				81A222546D1945EC935BBFE0 /* irsans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

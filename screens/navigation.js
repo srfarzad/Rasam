@@ -11,8 +11,8 @@ export const goToAuth = () => Navigation.setRoot({
                         options: {
                             bottomTab: {
                                 fontSize: 12,
-                                text: 'Home',
-                                icon : require('../src/assets/images/login.png'),
+                                text: 'خانه',
+                                icon : require('../src/assets/images/icon.png'),
                                 forceTitlesDisplay: true,
 
                             }
@@ -24,9 +24,9 @@ export const goToAuth = () => Navigation.setRoot({
                         name: 'Category',
                         options: {
                             bottomTab: {
-                                text: 'Category',
+                                text: 'دسته بندی ها',
                                 fontSize: 12,
-                                icon : require('../src/assets/images/login.png'),
+                                icon : require('../src/assets/images/cart.png'),
                                 forceTitlesDisplay: true,
                             }
                         }
@@ -37,9 +37,9 @@ export const goToAuth = () => Navigation.setRoot({
                         name: 'Setting',
                         options: {
                             bottomTab: {
-                                text: 'Setting',
+                                text: 'تنظیمات',
                                 fontSize: 12,
-                                icon : require('../src/assets/images/login.png'),
+                                icon : require('../src/assets/images/setting.png'),
                                 forceTitlesDisplay: true,
                             }
                         }
@@ -50,9 +50,9 @@ export const goToAuth = () => Navigation.setRoot({
                         name: 'Profile',
                         options: {
                             bottomTab: {
-                                text: 'Profile',
+                                text: 'پروفایل',
                                 fontSize: 12,
-                                icon : require('../src/assets/images/login.png'),
+                                icon : require('../src/assets/images/profile.png'),
                                 forceTitlesDisplay: true,
                             }
                         }
