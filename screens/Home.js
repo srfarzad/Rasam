@@ -77,8 +77,6 @@ class Home extends Component {
             allApplication : null,
 
         }
-
-
     }
 
     componentDidMount(){
@@ -90,7 +88,7 @@ class Home extends Component {
 
     render() {
 
-        console.log(this.state.application)
+       // console.log(this.state.application)
 
         return (
             <View style={styles.container}>
