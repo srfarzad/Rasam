@@ -73,7 +73,16 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+
+
+      //  entryFile: "index.android.js",
+
+        // whether to bundle JS and assets in debug mode
+       bundleInDebug: true,
+
+        // whether to bundle JS and assets in release mode
+        bundleInRelease: true,
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -108,6 +117,18 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+
+      signingConfigs {
+            release {
+
+                    storeFile file('/Users/farzad/Desktop/rasam')
+                    storePassword '123456789'
+                    keyAlias 'rasam'
+                    keyPassword '123456789'
+
+            }
+        }
+
     splits {
         abi {
             reset()
@@ -120,6 +141,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -142,13 +164,23 @@ android {
 
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support' && requested.name != 'multidex') {
+            details.useVersion "${rootProject.ext.supportLibVersion}"
+        }
+    }
+}
+
 dependencies {
-    compile project(':react-native-pushe')
+ // compile project(':react-native-pusheive-pushe')
+   // implementation project(':react-native-pushe')
        implementation fileTree(dir: "libs", include: ["*.jar"])
-       implementation "com.android.support:appcompat-v7:27.0.2"
+       implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
        implementation "com.facebook.react:react-native:+"  // From node_modules
        implementation project(':react-native-navigation')
-    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:design:${rootProject.ext.supportLibVersion}'
     implementation 'com.google.android.gms:play-services-gcm:11.8.0'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
 }
