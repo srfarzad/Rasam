@@ -7,12 +7,13 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button , FlatList , Image , ScrollView } from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, FlatList, Image, ScrollView, TouchableOpacity} from 'react-native';
 //import Pushe from 'react-native-pushe'
 import {I18nManager} from 'react-native';
 import ImageSlider from 'react-native-image-slider';
-
-
+import { Navigation } from 'react-native-navigation'
+//import  {goToScreen} from  'navigate';
+//import  styles from '../src/styles/style'
 
 class Home extends Component {
 
@@ -31,22 +32,20 @@ class Home extends Component {
 
     }
 
-        getNewData() {
+    getNewData() {
 
 
-            fetch('http://androidsupport.ir/market/getNewApplications.php')
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    this.setState({newApplication : responseJson})
-                } )
-                .catch((error)=>{
-                    console.log(error)
-                })
+        fetch('http://androidsupport.ir/market/getNewApplications.php')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({newApplication: responseJson})
+            })
+            .catch((error) => {
+                console.log(error)
+            })
 
 
-
-
-        }
+    }
 
     getAllData() {
 
@@ -54,41 +53,68 @@ class Home extends Component {
         fetch('http://androidsupport.ir/market/getAllApplications.php')
             .then((response) => response.json())
             .then((responseJson) => {
-                this.setState({newApplication : responseJson})
-            } )
-            .catch((error)=>{
+                this.setState({newApplication: responseJson})
+            })
+            .catch((error) => {
                 console.log(error)
             })
 
 
-
-
     }
 
 
-    constructor(props){
-    //    Pushe.initialize(true);
+    constructor(props) {
+        //    Pushe.initialize(true);
         super(props);
 
         this.state = {
 
-            application : null,
-            newApplication : null,
-            allApplication : null,
+            application: null,
+            newApplication: null,
+            allApplication: null,
 
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getBestData();
         this.getNewData();
         this.getAllData();
     }
 
 
+    goToScreen = (screenName, item) => {
+
+        Navigation.showModal({
+            stack: {
+                children: [{
+                    component: {
+                        name: screenName,
+                        passProps: {
+                            text: 'stack with one child',
+                            item : item
+                        },
+                        options: {
+                            topBar: {
+                                title: {
+                                    text: item.title,
+                                    fontSize: 14,
+                                    color: 'red',
+                                }
+                            }
+                        },
+                    }
+                }]
+            }
+        });
+
+
+    }
+
+
     render() {
 
-       // console.log(this.state.application)
+        // console.log(this.state.application)
 
         return (
             <View style={styles.container}>
@@ -96,65 +122,77 @@ class Home extends Component {
                 <ScrollView>
 
 
-                <View style={{height:220}}>
+                    <View style={{height: 220}}>
 
-                    <ImageSlider  loopBothSides
-                                  autoPlayWithInterval={3000} images={[
-                        'http://androidsupport.ir/picpic/images/react-native.jpg',
-                        'http://androidsupport.ir/picpic/images/images2.jpg',
-                        'http://androidsupport.ir/picpic/images/farzad.jpg'
-                    ]}/>
+                        <ImageSlider loopBothSides
+                                     autoPlayWithInterval={3000} images={[
+                            'http://androidsupport.ir/picpic/images/react-native.jpg',
+                            'http://androidsupport.ir/picpic/images/images2.jpg',
+                            'http://androidsupport.ir/picpic/images/farzad.jpg'
+                        ]}/>
 
-                </View>
-
-
-
-                <Text style={styles.welcome}>برترین محصولات</Text>
-
-                <FlatList
-                    style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' , height : 144 }}
-                horizontal={true}
-                keyExtractor={(item,index)=>index.toString()}
-                data={this.state.application}
-
-                renderItem ={({item})=><View style={styles.card}>
-
-                    <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
-                    <Text style={styles.text}>{item.title}</Text>
-
-                </View>}
-                />
+                    </View>
 
 
+                    <Text style={styles.welcome}>برترین محصولات</Text>
 
-                <Text style={styles.welcome}>جدیدترین محصولات</Text>
+                    <FlatList
+                        style={{flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row', height: 144}}
+                        horizontal={true}
+                        keyExtractor={(item, index) => index.toString()}
+                        data={this.state.application}
 
-                <FlatList
-                    style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' ,  height : 144 }}
-                    horizontal={true}
-                    keyExtractor={(item,index)=>index.toString()}
-                    data={this.state.newApplication}
+                        renderItem={({item}) =>
 
-                    renderItem ={({item})=><View style={styles.card}>
+                            <TouchableOpacity
+                                onPress={() =>
+                                    this.goToScreen('Product', item)
+                                }
+                            >
+                                <View style={styles.card}>
 
-                        <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
-                        <Text style={styles.text}>{item.title}</Text>
+                                    <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
+                                           style={{width: 96, height: 96}}></Image>
+                                    <Text style={styles.text}>{item.title}</Text>
 
-                    </View>}
-                />
+                                </View>
+
+                            </TouchableOpacity>
+
+                        }
+                    />
+
+
+                    <Text style={styles.welcome}>جدیدترین محصولات</Text>
+
+                    <FlatList
+                        style={{flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row', height: 144}}
+                        horizontal={true}
+                        keyExtractor={(item, index) => index.toString()}
+                        data={this.state.newApplication}
+
+                        renderItem={({item}) => <View style={styles.card}>
+
+                            <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
+                                   style={{width: 96, height: 96}}></Image>
+                            <Text style={styles.text}>{item.title}</Text>
+
+                        </View>}
+                    />
 
 
                     <Text style={styles.welcome}>همه محصولات</Text>
 
                     <FlatList
-                        style={{ flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' , height : 144 }}
+                        style={{flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row', height: 144}}
                         horizontal={true}
-                        keyExtractor={(item,index)=>index.toString()}
+                        keyExtractor={(item, index) => index.toString()}
                         data={this.state.application}
 
-                        renderItem ={({item})=><View style={styles.card}>
+                        renderItem={({item}) => <View style={styles.card}>
 
-                            <Image source={{uri:"http://androidsupport.ir/market/images/"+item.icon}} style={{width: 96 , height : 96}} ></Image>
+                            <Image source={{uri: "http://androidsupport.ir/market/images/" + item.icon}}
+                                   style={{width: 96, height: 96}}></Image>
                             <Text style={styles.text}>{item.title}</Text>
 
                         </View>}
@@ -170,31 +208,29 @@ class Home extends Component {
 
 export default Home;
 
+
 const styles = StyleSheet.create({
-    container: {
-
-
-    },
+    container: {},
     welcome: {
-        fontFamily: "irsans" ,
+        fontFamily: "irsans",
         fontSize: 20,
         textAlign: 'left',
         margin: 10,
     },
     text: {
-        fontFamily: "irsans" ,
+        fontFamily: "irsans",
         textAlign: 'center',
         color: '#333333',
-        marginTop : 5,
+        marginTop: 5,
 
     },
 
-    card : {
+    card: {
         width: 144,
-        height : 144,
-        backgroundColor:'#ffffff',
-        marginRight:15,
-        marginTop : 15,
+        height: 144,
+        backgroundColor: '#ffffff',
+        marginRight: 15,
+        marginTop: 15,
         alignItems: 'center',
     },
 
