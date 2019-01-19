@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button , FlatList , Image , ScrollView } from 'react-native';
-import Pushe from 'react-native-pushe'
+//import Pushe from 'react-native-pushe'
 import {I18nManager} from 'react-native';
 import ImageSlider from 'react-native-image-slider';
 
@@ -67,7 +67,7 @@ class Home extends Component {
 
 
     constructor(props){
-        Pushe.initialize(true);
+    //    Pushe.initialize(true);
         super(props);
 
         this.state = {
