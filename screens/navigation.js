@@ -54,6 +54,7 @@ export const goToAuth = () => Navigation.setRoot({
                                 fontSize: 12,
                                 icon : require('../src/assets/images/profile.png'),
                                 forceTitlesDisplay: true,
+
                             }
                         }
                     },
@@ -77,3 +78,4 @@ export const goHome = () => Navigation.setRoot({
         }
     }
 })
+

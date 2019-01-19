@@ -31,86 +31,66 @@ Navigation.registerComponent('Home',()=>Home)
 Navigation.registerComponent('Category',()=>Category)
 Navigation.registerComponent('Setting',()=>Setting)
 Navigation.registerComponent('Profile',()=>Profile)
+Navigation.setRoot({
+    root: {
+        bottomTabs: {
+            id: 'BottomTabsId',
+            children: [
+                {
+                    component: {
+                        name: 'Home',
+                        options: {
+                            bottomTab: {
+                                fontSize: 12,
+                                text: 'Home',
+                                icon : require('./src/assets/images/login.png'),
+                                forceTitlesDisplay: true,
 
-
-
-
-Navigation.events().registerAppLaunchedListener(()=>{
-
-    Navigation.setRoot({
-            root : {
-
-                stack : {
-                    id:'AppStack',
-                    children : [
-                        {
-                            component : {
-                                name : 'Welcome' ,
-                                options : {
-                                    topBar : {
-                                        title : {
-                                            text : 'App'
-                                        }, rightButtons : [{
-                                            id : 'SaveId',
-                                            text : 'Save',
-
-
-                                        }],
-
-                                    }
-
-
-
-                                }
-                            },
+                            }
                         }
-                    ]
-                }
-            }
-        }
-
-    )
-})
-
-
-
-/*
-
-Navigation.events().registerAppLaunchedListener(()=>{
-
-    Navigation.setRoot({
-            root : {
-
-                stack : {
-                    id:'AppStack',
-                    children : [
-                        {
-                            component : {
-                                name : 'Welcome' ,
-                                options : {
-                                    topBar : {
-                                        title : {
-                                            text : 'App'
-                                        }
-                                    }
-                                    , bottomTabs: {
-                                        translucent: true,
-                                        hideShadow: false,
-                                        tabColor: 'red',
-                                        titleDisplayMode: 'alwaysShow',
-                                        selectedTabColor: 'blue',
-                                        fontFamily: 'HelveticaNeue-Italic',
-                                        fontSize: 13,
-
-                                    }
-
-                                }
-                            },
+                    },
+                },
+                {
+                    component: {
+                        name: 'Category',
+                        options: {
+                            bottomTab: {
+                                text: 'Category',
+                                fontSize: 12,
+                                icon : require('./src/assets/images/login.png'),
+                                forceTitlesDisplay: true,
+                            }
                         }
-                    ]
-                }
-            }
-        }
+                    },
+                },
+                {
+                    component: {
+                        name: 'Setting',
+                        options: {
+                            bottomTab: {
+                                text: 'Setting',
+                                fontSize: 12,
+                                icon : require('./src/assets/images/login.png'),
+                                forceTitlesDisplay: true,
+                            }
+                        }
+                    },
+                },
+                {
+                    component: {
+                        name: 'Profile',
+                        options: {
+                            bottomTab: {
+                                text: 'Profile',
+                                fontSize: 12,
 
-    )
-})*/
+                                icon : require('./src/assets/images/login.png'),
+                                forceTitlesDisplay: true,
+                            }
+                        }
+                    },
+                },
+            ],
+        }
+    }
+});
