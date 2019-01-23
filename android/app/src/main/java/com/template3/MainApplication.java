@@ -3,12 +3,25 @@ package com.template3;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactnativecommunity.webview.RNCWebViewPackage;
+
+import io.invertase.firebase.RNFirebasePackage;
+
+import com.airbnb.android.react.lottie.LottiePackage;
+
+import io.invertase.firebase.RNFirebasePackage;
+
+import com.airbnb.android.react.lottie.LottiePackage;
+import com.airbnb.android.react.lottie.LottiePackage;
+//import com.reactnativecommunity.webview.RNCWebViewPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage; // <-- Add this line
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +55,11 @@ public class MainApplication extends NavigationApplication {
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
                 // eg. new VectorIconsPackage()
+                new MainReactPackage(),
+                new RNFirebasePackage(),
+                new LottiePackage(),
+                new RNFirebaseStoragePackage(), // <-- Add this line,
+                new RNFirebaseAuthPackage() // <-- Add this line
         );
     }
 

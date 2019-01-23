@@ -7,18 +7,21 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-import { WebView } from "react-native-webview";
+import {Platform, StyleSheet, Text, View, Button,WebView} from 'react-native';
+//import { WebView } from "react-native-webview";
 
 
 class Webview extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <WebView
-                    source={{ uri: "https://google.com" }}
-                    style={{ marginTop: 20 }}
-                    onLoadProgress={e => console.log(e.nativeEvent.progress)}
+                <Webview
+                    source={{ uri: "http://p30droid.com" }}
+                    style={{ marginTop: 20 , height:'100%' , width:'320' }}
+                    onLoadingError={(e)=>{console.log(e)}}
+                    scalesPageToFit={true}
+                    javaScriptEnabled={true}
+                    bounces={false}
                 />
 
 

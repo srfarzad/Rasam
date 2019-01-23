@@ -7,15 +7,78 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, FlatList, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {Platform, StyleSheet, View, FlatList, Image, ScrollView, TouchableOpacity} from 'react-native';
+import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text} from 'native-base';
+
 //import Pushe from 'react-native-pushe'
 import {I18nManager} from 'react-native';
 import ImageSlider from 'react-native-image-slider';
-import { Navigation } from 'react-native-navigation'
+import {Navigation} from 'react-native-navigation'
 //import  {goToScreen} from  'navigate';
 //import  styles from '../src/styles/style'
+import firebase from 'react-native-firebase';
+
 
 class Home extends Component {
+
+
+    registerUser(){
+
+        firebase.auth().createUserWithEmailAndPassword("test@gmail.com", "12saDDD@@")
+            .then((user) => {
+                // If you need to do anything with the user, do it here
+                // The user will be logged in automatically by the
+                // `onAuthStateChanged` listener we set up in App.js earlier
+                console.log(user)
+            })
+            .catch((error) => {
+                const { code, message } = error;
+                console.log(error)
+                // For details of error codes, see the docs
+                // The message contains the default Firebase string
+                // representation of the error
+            });
+
+    }
+
+
+
+    loginuser(){
+
+        firebase.auth().signInWithEmailAndPassword("test@gmail.com","Asd!2345")
+            .then((user) => {
+                // If you need to do anything with the user, do it here
+                // The user will be logged in automatically by the
+                // `onAuthStateChanged` listener we set up in App.js earlier
+                console.log(user)
+            })
+            .catch((error) => {
+                const { code, message } = error;
+                console.log(error)
+                // For details of error codes, see the docs
+                // The message contains the default Firebase string
+                // representation of the error
+            });
+    }
+
+
+    loginuserPhone(){
+
+        firebase.auth().signInWithPhoneNumber("0098912344566")
+            .then((user) => {
+                // If you need to do anything with the user, do it here
+                // The user will be logged in automatically by the
+                // `onAuthStateChanged` listener we set up in App.js earlier
+                console.log(user)
+            })
+            .catch((error) => {
+                const { code, message } = error;
+                console.log(error)
+                // For details of error codes, see the docs
+                // The message contains the default Firebase string
+                // representation of the error
+            });
+    }
 
 
     getBestData() {
@@ -80,6 +143,7 @@ class Home extends Component {
         this.getBestData();
         this.getNewData();
         this.getAllData();
+        this.registerUser();
     }
 
 
@@ -92,7 +156,7 @@ class Home extends Component {
                         name: screenName,
                         passProps: {
                             text: 'stack with one child',
-                            item : item
+                            item: item
                         },
                         options: {
                             topBar: {
@@ -117,10 +181,23 @@ class Home extends Component {
         // console.log(this.state.application)
 
         return (
-            <View style={styles.container}>
 
-                <ScrollView>
 
+            <Container style={styles.container}>
+
+
+                <Header>
+
+                    <Right>
+                        <Button transparent>
+                            <Icon name='menu'/>
+                        </Button>
+                    </Right>
+
+
+                </Header>
+
+                <Content>
 
                     <View style={{height: 220}}>
 
@@ -199,9 +276,12 @@ class Home extends Component {
                     />
 
 
-                </ScrollView>
+                </Content>
 
-            </View>
+
+            </Container>
+
+
         );
     }
 }

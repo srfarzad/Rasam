@@ -7,17 +7,88 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
+import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text,Accordion,Badge,Card,CardItem} from 'native-base';
+import LottieView from 'lottie-react-native';
 
+
+const dataArray = [
+    { title: "First Element", content: "Lorem ipsum dolor sit amet" },
+    { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
+    { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
+];
 
 class Profile extends Component {
+
+
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>Profile</Text>
+
+            <Container>
+                <Header />
+                <Content padder>
+
+                 {/*   <LottieView
+                        source={require('../animation/action.json')}
+                        autoPlay
+                        loop
+                    />*/}
 
 
-            </View>
+
+                    <Accordion
+                        dataArray={dataArray}
+                        icon="add"
+                        expandedIcon="remove"
+                        iconStyle={{ color: "green" }}
+                        expandedIconStyle={{ color: "red" }}
+                    />
+
+                    <Badge>
+                        <Text>2</Text>
+                    </Badge>
+
+                    <Button rounded light><Text> Light </Text></Button>
+                    <Button primary><Text> Primary </Text></Button>
+                    <Button success><Text> Success </Text></Button>
+                    <Button info><Text> Info </Text></Button>
+                    <Button warning><Text> Warning </Text></Button>
+                    <Button danger><Text> Danger </Text></Button>
+                    <Button dark><Text> Dark </Text></Button>
+
+
+                    <Card>
+                        <CardItem>
+                            <Body>
+                            <Text>
+                                //Your text here
+                            </Text>
+                            </Body>
+                        </CardItem>
+                    </Card>
+
+                </Content>
+
+
+                <Footer>
+                    <FooterTab>
+                        <Button full>
+                            <Text>Footer</Text>
+                        </Button>
+                    </FooterTab>
+
+                    <FooterTab>
+                        <Button full>
+                            <Text>Footer</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+
+            </Container>
+
+
+
         );
     }
 }

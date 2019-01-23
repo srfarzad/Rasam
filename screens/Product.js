@@ -7,8 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, Image,ScrollView} from 'react-native';
+import {Platform, StyleSheet, View, Image,ScrollView} from 'react-native';
 import StarRating from 'react-native-star-rating';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
 
 
 class Product extends Component {
@@ -31,68 +32,100 @@ class Product extends Component {
         return (
 
 
-            <ScrollView>
+            <Container>
 
-                <View style={styles.container}>
+                <head>
 
-                    <View style={{flex: 1, flexDirection: 'row', margin: 12}}>
+                    <Left>
+
+                        <Button transparent>
+                            <Icon name='menu' />
+                        </Button>
+
+                    </Left>
+
+                </head>
 
 
-                        <Image source={{uri: "http://androidsupport.ir/market/images/" + this.props.item.icon}}
-                               style={styles.image}></Image>
+
+                <Content>
+
+                    <View style={styles.container}>
+
+                        <View style={{flex: 1, flexDirection: 'row', margin: 12}}>
 
 
-                        <View style={{flex: 1,flexDirection: 'column', margin: 12}}>
+                            <Image source={{uri: "http://androidsupport.ir/market/images/" + this.props.item.icon}}
+                                   style={styles.image}></Image>
 
 
-                            <View style={{flexDirection: 'column', margin: 12}}>
+                            <View style={{flex: 1,flexDirection: 'column', margin: 12}}>
 
-                                <Text style={styles.welcome}>{this.props.item.title}</Text>
 
-                                <Text style={[styles.welcome, styles.margin_5]}> قیمت {this.props.item.price}</Text>
+                                <View style={{flexDirection: 'column', margin: 12}}>
+
+                                    <Text style={styles.welcome}>{this.props.item.title}</Text>
+
+                                    <Text style={[styles.welcome, styles.margin_5]}> قیمت {this.props.item.price}</Text>
+                                </View>
+
+
+
+
+                                <StarRating
+                                    reversed={true}
+                                    maxStars={5}
+                                    rating={this.props.item.rate}
+                                    fullStarColor={'yellow'}
+                                />
+
                             </View>
 
 
 
 
-                            <StarRating
-                                reversed={true}
-                                maxStars={5}
-                                rating={this.props.item.rate}
-                                fullStarColor={'yellow'}
-                            />
+                        </View>
+
+                        <View style={{flex: 1, flexDirection: 'column', margin: 12}}>
+
+
+
+                            <Text style={[styles.instructions,styles.border]}>
+                                {this.props.item.shortDescription}
+
+
+                            </Text>
+
+
+                            <Button title="ادامه مطلب"></Button>
+
+
+
+
+
 
                         </View>
 
 
-
-
-                    </View>
-
-                    <View style={{flex: 1, flexDirection: 'column', margin: 12}}>
-
-
-
-                        <Text style={[styles.instructions,styles.border]}>
-                            {this.props.item.shortDescription}
-
-
-                        </Text>
-
-
-                        <Button title="ادامه مطلب"></Button>
-
-
-
-
-
-
                     </View>
 
 
-                </View>
 
-            </ScrollView>
+                </Content>
+
+
+                <Footer>
+
+
+
+
+                </Footer>
+
+
+
+            </Container>
+
+
 
 
         );

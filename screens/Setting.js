@@ -7,12 +7,18 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
-import { Navigation } from 'react-native-navigation'
+import {Platform, StyleSheet, View} from 'react-native';
+import {Navigation} from 'react-native-navigation'
+import call from 'react-native-phone-call'
+import {Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text,Card,CardItem} from 'native-base';
 
+
+const args = {
+    number: '9093900003', // String value with the number to call
+    prompt: false // Optional boolean property. Determines if the user should be prompt prior to the call
+}
 
 class Setting extends Component {
-
 
 
     goToScreen = (screenName) => {
@@ -45,23 +51,51 @@ class Setting extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <Container>
 
-                <View style={{height: 50}}>
-
-                    <Text>وب سایت ما</Text>
-                    <Button title="باز کردن"  onPress={ ()=>{
-
-                        this.goToScreen('Webview')
-
-                    } } />
+                <Header>
 
 
-                </View>
+                </Header>
+
+                <Content>
 
 
+                    <View style={{height: 50}}>
 
-            </View>
+                        <Text>وب سایت ما</Text>
+                        <Button title="باز کردن" onPress={() => {
+
+                            this.goToScreen('Webview')
+
+                        }}/>
+
+                    </View>
+
+
+                    <Card>
+
+                        <CardItem>
+
+                            <Button  full primary onPress={()=>{
+                                call(args).catch(console.error)
+
+                            }} >
+
+                                <Text> Call me </Text>
+
+
+                            </Button>
+
+                        </CardItem>
+
+                    </Card>
+
+
+                </Content>
+
+
+            </Container>
         );
     }
 }
