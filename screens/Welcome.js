@@ -7,34 +7,41 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button , AsyncStorage} from 'react-native';
+import {Platform, StyleSheet, View, Alert, Button, Text} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {goHome , goToAuth} from "./navigation";
 
-class WelcomeScreen extends Component {
-
-
-    async componentDidMount() {
-        try {
+class Welcome extends Component {
 
 
-                goToAuth()
+    /* async componentDidMount() {
+         try {
 
-        } catch (err) {
-            console.log('error: ', err)
-            goToAuth()
-        }
+
+               //  goToAuth()
+
+         } catch (err) {
+             console.log('error: ', err)
+             goToAuth()
+         }
+     }*/
+
+
+    goToScreen = (screenName) => {
+
+
+        console.log(screenName)
+
+
+        Navigation.showModal({
+            stack: {
+                children: [{
+                    component: {
+                        name: screenName,
+                    }
+                }]
+            }
+        })
     }
-
-
-     goToScreen = (screenName) => {
-
-         Navigation.push(this.props.componentId, {
-             component : {
-                 name : screenName
-             }
-         })
-     }
 
     render() {
         return (
@@ -42,20 +49,19 @@ class WelcomeScreen extends Component {
                 <Text style={styles.welcome}>Welcome to React Native!</Text>
 
 
-                <Button title ='Sign In' onPress={ ()=>this.goToScreen('SignIn') }   />
+                <Button title ="Sign In" onPress={ ()=>this.goToScreen('SignIn') }   />
 
-                <Button title ='Sign In' onPress={ ()=>this.goToScreen('SignUp') }
-                  />
-
-                <Button title ='Sign In'
+                <Button title ="Sign In" onPress={ ()=>this.goToScreen('SignUp') }
                 />
+
+
 
             </View>
         );
     }
 }
 
-export default WelcomeScreen;
+export default Welcome;
 
 const styles = StyleSheet.create({
     container: {

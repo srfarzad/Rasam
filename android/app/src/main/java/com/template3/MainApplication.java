@@ -3,6 +3,8 @@ package com.template3;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import com.airbnb.android.react.lottie.LottiePackage;
 
 import io.invertase.firebase.RNFirebasePackage;
 
@@ -56,8 +58,8 @@ public class MainApplication extends NavigationApplication {
         return Arrays.<ReactPackage>asList(
                 // eg. new VectorIconsPackage()
                 new MainReactPackage(),
+            new LottiePackage(),
                 new RNFirebasePackage(),
-                new LottiePackage(),
                 new RNFirebaseStoragePackage(), // <-- Add this line,
                 new RNFirebaseAuthPackage() // <-- Add this line
         );

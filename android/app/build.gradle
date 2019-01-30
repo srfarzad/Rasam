@@ -143,6 +143,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-firebase')
+    compile project(':lottie-react-native')
     implementation project(':react-native-firebase')
     implementation project(':lottie-react-native')
     implementation project(':react-native-firebase')

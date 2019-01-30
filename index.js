@@ -21,116 +21,40 @@ import Profile from './screens/Profile'
 import LeftMenu from './screens/LeftMenu'
 import Product from './screens/Product'
 import Webview from './screens/Webview'
+import NavigationHome from './screens/NavigationHome'
 
 
+Navigation.registerComponent('Welcome', () => Welcome)
+Navigation.registerComponent('SignIn', () => SignIn)
+Navigation.registerComponent('SignUp', () => SignUp)
 
 
-Navigation.registerComponent('Welcome',()=>Welcome)
-Navigation.registerComponent('SignIn',()=>SignIn)
-Navigation.registerComponent('SignUp',()=>SignUp)
-
-
-Navigation.registerComponent('Home',()=>Home)
-Navigation.registerComponent('Category',()=>Category)
-Navigation.registerComponent('Setting',()=>Setting)
-Navigation.registerComponent('Profile',()=>Profile)
-Navigation.registerComponent('LeftMenu',()=>LeftMenu)
-Navigation.registerComponent('Product',()=>Product)
-Navigation.registerComponent('Webview',()=>Webview)
+Navigation.registerComponent('Home', () => Home)
+Navigation.registerComponent('Category', () => Category)
+Navigation.registerComponent('Setting', () => Setting)
+Navigation.registerComponent('Profile', () => Profile)
+Navigation.registerComponent('LeftMenu', () => LeftMenu)
+Navigation.registerComponent('Product', () => Product)
+Navigation.registerComponent('Webview', () => Webview)
+Navigation.registerComponent('NavigationHome', () => NavigationHome)
 
 
 Navigation.setRoot({
     root: {
-
-
-
-
-        sideMenu: {
-            left: {
-                component: {
-                    name: 'LeftMenu',
-                    passProps: {
-                        text: 'This is a left side menu screen'
+        stack: {
+            id: 'Welcome',
+            children: [
+                {
+                    component: {
+                        name: 'Welcome',
+                        options: {
+                            overlay: {
+                                interceptTouchOutside: true
+                            }
+                        }
                     }
                 }
-            },
-
-            center  : {
-
-                bottomTabs: {
-                    id: 'BottomTabsId',
-                    children: [
-                        {
-                            component: {
-                                name: 'Home',
-                                options: {
-                                    bottomTab: {
-                                        fontSize: 12,
-                                        text: 'Home',
-                                        icon : require('./src/assets/images/login.png'),
-                                        forceTitlesDisplay: true,
-
-                                    }
-                                }
-                            },
-                        },
-                        {
-                            component: {
-                                name: 'Category',
-                                options: {
-                                    bottomTab: {
-                                        text: 'Category',
-                                        fontSize: 12,
-                                        icon : require('./src/assets/images/login.png'),
-                                        forceTitlesDisplay: true,
-                                    }
-                                }
-                            },
-                        },
-                        {
-                            component: {
-                                name: 'Setting',
-                                options: {
-                                    bottomTab: {
-                                        text: 'Setting',
-                                        fontSize: 12,
-                                        icon : require('./src/assets/images/login.png'),
-                                        forceTitlesDisplay: true,
-                                    }
-                                }
-                            },
-                        },
-                        {
-                            component: {
-                                name: 'Profile',
-                                options: {
-                                    bottomTab: {
-                                        text: 'Profile',
-                                        fontSize: 12,
-
-                                        icon : require('./src/assets/images/login.png'),
-                                        forceTitlesDisplay: true,
-                                    }
-                                }
-                            },
-                        },
-                    ],
-                }
-
-            },
-            right :{
-                component: {
-                    name: 'LeftMenu',
-                    passProps: {
-                        text: 'This is a left side menu screen'
-                    }
-                }
-            }
+            ],
         }
-
-
-
-
-
     }
 });
